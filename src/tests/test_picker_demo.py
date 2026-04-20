@@ -1,5 +1,6 @@
 from screens import HomeScreen, PickerScreen
 
+
 class TestPickerScreen:
     def test_open_picker_screen(self, driver):
         home_screen = HomeScreen(driver)
@@ -12,5 +13,7 @@ class TestPickerScreen:
         picker_screen = PickerScreen(driver)
         home_screen.open_picker_screen()
         picker_screen.open_month_picker()
-        picker_screen.pick_month("January")
-        picker_screen.navigate().back()
+        picker_screen.pick_month("February")
+        picker_screen.open_day_picker()
+        picker_screen.pick_day("7")
+        picker_screen.go_back()

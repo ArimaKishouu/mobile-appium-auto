@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from typing import Any
 
 class BaseScreen:
 
@@ -11,7 +12,7 @@ class BaseScreen:
             EC.visibility_of_element_located(locator)
             )
 
-    def click(self, locator):
+    def click(self, locator, attribute = None):
         WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(locator)
         ).click()
@@ -22,8 +23,12 @@ class BaseScreen:
             element.clear()
         element.send_keys(value)
 
-    def get_text (self, locator):
+    def get_text (self, locator, expected=None):
         return self.find(locator).text
+
+    def go_back(self):
+        self.driver.back()
+
 
 
 
